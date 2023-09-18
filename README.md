@@ -89,7 +89,7 @@
       - 이미 기수가 진행중이면 중도 참여는 불가능하고, 다음 기수로 신청된다.
       - 기수 전체 기간 벌금보다 예치금이 적으면 신청이 불가능하다.
 
-<!-- 
+
 ## ERD
 ![ERD](doc/img/erd.png)
 
@@ -103,5 +103,3 @@
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 </div>
-
--->

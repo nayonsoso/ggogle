@@ -91,7 +91,7 @@
 
 
 ## ERD
-![ERD](doc/img/erd.png)
+![ERD](doc/img/updated_erd.png)
 
 ## Trouble Shooting
 [go to the trouble shooting section](doc/TROUBLE_SHOOTING.md)

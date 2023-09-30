@@ -1,13 +1,10 @@
-package com.example.ggogle.entity;
+package com.example.ggoogle.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import java.util.List;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,16 +17,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SiteUser {
+public class Likes {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(length = 50)
-  private String name;
+  @ManyToOne
+  private Post post;
 
-  @Column(length = 50)
-  private String userId;
-
-  private String password;
+  @ManyToOne
+  private SiteUser siteUser;
 }

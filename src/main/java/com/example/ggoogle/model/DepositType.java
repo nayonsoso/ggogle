@@ -1,4 +1,4 @@
-package com.example.ggogle.model;
+package com.example.ggoogle.model;
 
 import lombok.Getter;
 

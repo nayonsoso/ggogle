@@ -1,4 +1,4 @@
-package com.example.ggogle.entity;
+package com.example.ggoogle.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ public class Attendance {
   private SiteUser siteUser;
 
   //TODO: "yy-mm" 형식만 저장되게 할 수는 없나?
-  @Column(updatable = false, nullable = false)
+  @Column(updatable = false, nullable = false, length = 50)
   private String stage;
 
   @Column(updatable = false, nullable = false)

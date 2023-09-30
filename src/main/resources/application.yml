@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    include: db
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: false
+    database: mysql
+    defer-datasource-initialization: true
+
+#  sql:
+#    init:
+#      mode: always

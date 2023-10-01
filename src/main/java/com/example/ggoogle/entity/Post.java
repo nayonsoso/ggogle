@@ -1,5 +1,6 @@
 package com.example.ggoogle.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,6 +55,6 @@ public class Post {
     this.createdTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
   }
 
-  @OneToMany(mappedBy = "post")
-  List<Comment> commentList;
+  @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+  List<Comment> commentList = new ArrayList<>();
 }

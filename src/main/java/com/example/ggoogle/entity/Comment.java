@@ -1,5 +1,6 @@
 package com.example.ggoogle.entity;
 
+import com.example.ggoogle.model.CommentForListDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -55,4 +56,13 @@ public class Comment {
     }
     post.getCommentList().add(this);
   }
+
+  public static CommentForListDto toCommentForListDto(Comment comment){
+    return CommentForListDto.builder()
+            .content(comment.getContent())
+            .writerName(comment.getSiteUser().getName())
+            .commentedTime(comment.getCreatedTime())
+            .build();
+  }
+
 }

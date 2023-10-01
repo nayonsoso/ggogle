@@ -1,5 +1,7 @@
 package com.example.ggoogle.entity;
 
+import com.example.ggoogle.model.PostDetailDto;
+import com.example.ggoogle.model.PostForListDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +48,9 @@ public class Post {
   private String summary;
 
   @Column(columnDefinition = "int default 0")
+  private Integer commentCount;
+
+  @Column(columnDefinition = "int default 0")
   private Integer likeCount;
 
   @Column(updatable = false, nullable = false)
@@ -57,4 +64,27 @@ public class Post {
 
   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
   List<Comment> commentList = new ArrayList<>();
+
+  public static PostForListDto toPostForList(Post post){
+    return PostForListDto.builder()
+            .writerName(post.getSiteUser().getName())
+            .title(post.getTitle())
+            .postedDate(post.getCreatedTime().split(" ")[0])
+            .commentCount(post.commentCount)
+            .likeCount(post.likeCount)
+            .build();
+  }
+
+  public static PostDetailDto toPostDetail(Post post){
+    return PostDetailDto.builder()
+            .writerName(post.getSiteUser().getName())
+            .title(post.getTitle())
+            .summary(post.getSummary())
+            .link(post.getLink())
+            .commentList(post.getCommentList().stream().map(Comment::toCommentForListDto).collect(Collectors.toList()))
+            .postedTime(post.getCreatedTime())
+            .commentCount(post.getCommentCount())
+            .likeCount(post.getLikeCount())
+            .build();
+  }
 }

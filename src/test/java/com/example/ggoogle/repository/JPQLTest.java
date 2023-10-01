@@ -42,8 +42,8 @@ public class JPQLTest {
         //TODO: TestEntityManager나 persist 등을 이용하면 더 좋은 테스트 코드를 짤 수 있을 것 같음
         //given
         SiteUser user = createSiteUser();
-        Post post1 = createPost();
-        Post post2 = createPost();
+        Post post1 = createPost(user);
+        Post post2 = createPost(user);
         Comment comment1 = createComment(post1, user);
         Comment comment2 = createComment(post2, user);
         Comment comment3 = createComment(post2, user);
@@ -69,8 +69,8 @@ public class JPQLTest {
         //given
         SiteUser user1 = createSiteUser();
         SiteUser user2 = createSiteUser();
-        Post post1 = createPost();
-        Post post2 = createPost();
+        Post post1 = createPost(user1);
+        Post post2 = createPost(user2);
         siteUserRepository.save(user1);
         siteUserRepository.save(user2);
         postRepository.save(post1);
@@ -95,8 +95,8 @@ public class JPQLTest {
         //given
         SiteUser user1 = createSiteUser();
         SiteUser user2 = createSiteUser();
-        Post post1 = createPost();
-        Post post2 = createPost();
+        Post post1 = createPost(user1);
+        Post post2 = createPost(user2);
         siteUserRepository.save(user1);
         siteUserRepository.save(user2);
         postRepository.save(post1);
@@ -115,11 +115,12 @@ public class JPQLTest {
         assertThat(likesList.contains(likes2)).isFalse();
     }
 
-    Post createPost(){
+    Post createPost(SiteUser siteUser){
         return Post.builder()
                 .title(testStr+" title")
                 .link(testStr+" link")
                 .summary(testStr+" summary")
+                .siteUser(siteUser)
                 .build();
     }
 

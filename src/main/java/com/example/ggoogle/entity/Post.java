@@ -48,10 +48,10 @@ public class Post {
   private String summary;
 
   @Column(columnDefinition = "int default 0")
-  private Integer commentCount;
+  private int commentCount;
 
   @Column(columnDefinition = "int default 0")
-  private Integer likeCount;
+  private int likeCount;
 
   @Column(updatable = false, nullable = false)
   @CreatedDate
@@ -62,6 +62,7 @@ public class Post {
     this.createdTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
   }
 
+  @Builder.Default
   @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
   List<Comment> commentList = new ArrayList<>();
 

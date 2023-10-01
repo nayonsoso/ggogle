@@ -26,14 +26,14 @@ public class Deposit {
 
   // @Comment("입금/출금/벌금/정산 된 액수, 부호 있음")
   @Column(updatable = false, nullable = false)
-  private Integer amount;
+  private int amount;
 
   @Column(updatable = false, nullable = false)
   @CreatedDate
   private String createdTime;
 
   @Column(columnDefinition = "int unsigned", updatable = false, nullable = false)
-  private Integer balance;
+  private int balance;
 
   @Column(nullable = false, updatable = false)
   @Enumerated(EnumType.STRING)

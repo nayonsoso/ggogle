@@ -31,14 +31,14 @@ public class Attendance {
   private String stage;
 
   @Column(updatable = false, nullable = false)
-  private Integer week;
+  private int week;
 
   @Column(updatable = false, nullable = false)
-  private Integer postCount;
+  private int postCount;
 
   @Column(updatable = false, nullable = false)
-  private Integer commentCount;
+  private int commentCount;
 
   @Column(updatable = false, nullable = false)
-  private Integer fine;
+  private int fine;
 }

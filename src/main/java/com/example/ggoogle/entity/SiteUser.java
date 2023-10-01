@@ -32,7 +32,7 @@ public class SiteUser {
 
   private String password;
 
-  @OneToOne(mappedBy = "siteUser", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "siteUser", cascade = CascadeType.REMOVE)
   private UserProfile userProfile;
 
   public void editProfile(UserProfile profile){

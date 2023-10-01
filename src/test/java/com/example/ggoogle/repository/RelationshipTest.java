@@ -23,12 +23,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
-/* H2 설정
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-test.yml")
-*/
-
-@TestPropertySource(locations = "classpath:application-db.yml")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class RelationshipTest {
@@ -63,7 +59,7 @@ public class RelationshipTest {
     assertThat(foundProfile.getLinkedIn()).isEqualTo(testStr+" linkedIn");
   }
 
-  @DisplayName("1:1 양방향에서 orphanRemoval 작동함")
+  @DisplayName("1:1 양방향에서 cascade.REMOVE 테스트")
   @Test
   void UserProfile_OrphanRemoval_Test(){
     //given
@@ -82,7 +78,7 @@ public class RelationshipTest {
     assertThat(userProfileRepository.findAll().size()).isEqualTo(before_profile - 1);
   }
 
-  @DisplayName("1:N 양방향에서 orphanRemoval 작동함")
+  @DisplayName("1:N 양방향에서 cascade.REMOVE 테스트")
   @Test
   void Comment_OrphanRemoval_Test(){
     //given

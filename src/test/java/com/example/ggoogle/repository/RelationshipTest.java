@@ -42,7 +42,7 @@ public class RelationshipTest {
 
   String testStr = "test";
 
-  @DisplayName("일대일 단방향 조회 테스트")
+  @DisplayName("1:1 단방향 조회 테스트")
   @Test
   void oneToOne_OneWay_find_Test(){
     // given

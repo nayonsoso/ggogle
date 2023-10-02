@@ -1,6 +1,7 @@
 package com.example.ggoogle.service.impl;
 
 import com.example.ggoogle.entity.Comment;
+import com.example.ggoogle.entity.Likes;
 import com.example.ggoogle.entity.Post;
 import com.example.ggoogle.entity.SiteUser;
 
@@ -29,6 +30,13 @@ public class ObjectForTest {
         .userId(testStr + " userId")
         .name(testStr + " name")
         .password(testStr + " password")
+        .build();
+  }
+
+  public static Likes createLikes(SiteUser siteUser, Post post){
+    return Likes.builder()
+        .post(post)
+        .siteUser(siteUser)
         .build();
   }
 }

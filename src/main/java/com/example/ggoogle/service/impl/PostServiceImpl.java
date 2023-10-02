@@ -38,7 +38,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostForListDto> getPostList() {
         //TODO: 페이징 처리
-        return postRepository.findAll().stream().map(Post::toPostForList).collect(Collectors.toList());
+        return postRepository.findAll().stream().map(Post::toPostForList)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### yml ###
-application-db.yml
+!**/src/main/resources/application-db.yml
